@@ -1,0 +1,15 @@
+n | 7 donc n = 7k, k un relatif
+
+n | 7 => f(n) | 7
+
+div euclidienne = n = 10q + r <=> q = (n - r) / 10 <=> r = n - 10q
+
+q - 2r
+
+10q + r = 7k
+q - 2r = 7k - 9q - 3(7k - 10q)
+q - 2r = 7k - 9q - 21k + 30q
+q - 2r = -14k + 21q
+q - 2r = 7(-2k + 3q)
+
+donc 7 divise f(n)

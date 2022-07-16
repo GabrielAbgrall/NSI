@@ -1,0 +1,15 @@
+- Partie sonore
+
+- Boss all sides
+
+
+
+
+
+
+-scoring de fin de game
+
+- Zone de dégâts au sol (Build ou autre à voire)
+
+- Nouveau consomable ( Pillule : "Tp à un endroit random autour de notre position", Bouffe d'astronaute : "Régénération",
+Bôite de conserve bio : "Résistance", Popcorn : "Ajoute un nouveau point de vie et soigne quelques hp")

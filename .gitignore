@@ -1,0 +1,5 @@
+# FILES
+*.idea
+
+# FOLDERS
+__pycache__/

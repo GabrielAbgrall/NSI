@@ -1,4 +1,5 @@
 import pygame
+import os
 
 from entity.player.Player import Player
 from entity.player.Inventory import Inventory
@@ -8,47 +9,47 @@ from game.GameManager import *
 
 class HUD:
     # HUD IMAGES
-    cursor_image = pygame.image.load("assets/HUD/cursor.png")
-    visor_cursor_image = pygame.image.load("assets/HUD/visor_cursor.png")
+    cursor_image = pygame.image.load(os.path.join("assets", "HUD", "cursor.png"))
+    visor_cursor_image = pygame.image.load(os.path.join("assets", "HUD", "visor_cursor.png"))
 
-    border_health_bar = pygame.image.load("assets/HUD/border_health_bar.png")
-    health_bar_heart = pygame.image.load("assets/HUD/health_bar_heart.png")
-    big_case_item = pygame.image.load("assets/HUD/big_case_item.png")
-    small_case_item = pygame.image.load("assets/HUD/small_case_item.png")
-    small_case_item_use = pygame.image.load("assets/HUD/small_case_item_use.png")
+    border_health_bar = pygame.image.load(os.path.join("assets", "HUD", "border_health_bar.png"))
+    health_bar_heart = pygame.image.load(os.path.join("assets", "HUD", "health_bar_heart.png"))
+    big_case_item = pygame.image.load(os.path.join("assets", "HUD", "big_case_item.png"))
+    small_case_item = pygame.image.load(os.path.join("assets", "HUD", "small_case_item.png"))
+    small_case_item_use = pygame.image.load(os.path.join("assets", "HUD", "small_case_item_use.png"))
 
-    effect_case = pygame.image.load("assets/HUD/effect_case.png")
+    effect_case = pygame.image.load(os.path.join("assets", "HUD", "effect_case.png"))
 
-    infinite_logo = pygame.image.load("assets/HUD/infinite_ammo.png")
+    infinite_logo = pygame.image.load(os.path.join("assets", "HUD", "infinite_ammo.png"))
 
-    resources_hud = pygame.image.load("assets/HUD/resources_hud.png")
+    resources_hud = pygame.image.load(os.path.join("assets", "HUD", "resources_hud.png"))
 
-    crystal_logo = pygame.image.load("assets/HUD/crystal_logo.png")
-    money_logo = pygame.image.load("assets/HUD/lumus_logo.png")
+    crystal_logo = pygame.image.load(os.path.join("assets", "HUD", "crystal_logo.png"))
+    money_logo = pygame.image.load(os.path.join("assets", "HUD", "lumus_logo.png"))
 
-    objective_hud = pygame.image.load("assets/HUD/objective/objective_hud.png")
-    objective_logo_hud = pygame.image.load("assets/HUD/objective/objective_logo.png")
-    main_objective_logo_hud = pygame.image.load("assets/HUD/objective/main_objective_logo.png")
+    objective_hud = pygame.image.load(os.path.join("assets", "HUD", "objective", "objective_hud.png"))
+    objective_logo_hud = pygame.image.load(os.path.join("assets", "HUD", "objective", "objective_logo.png"))
+    main_objective_logo_hud = pygame.image.load(os.path.join("assets", "HUD", "objective", "main_objective_logo.png"))
 
-    boss_life_hud = pygame.image.load("assets/HUD/boss_life_hud.png")
-    boss_head_logo = pygame.image.load("assets/HUD/boss_head_logo.png")
+    boss_life_hud = pygame.image.load(os.path.join("assets", "HUD", "boss_life_hud.png"))
+    boss_head_logo = pygame.image.load(os.path.join("assets", "HUD", "boss_head_logo.png"))
 
-    build_info_hud = pygame.image.load("assets/HUD/build_info_hud.png")
+    build_info_hud = pygame.image.load(os.path.join("assets", "HUD", "build_info_hud.png"))
 
     # HUD FONT
-    small_item_font = pygame.font.Font("assets/font/font_item.ttf", 10)
-    big_item_font = pygame.font.Font("assets/font/font_item.ttf", 12)
-    resources_font = pygame.font.Font("assets/font/font_item.ttf", 12)
-    receive_resources_font = pygame.font.Font("assets/font/font_item.ttf", 18)
-    big_ammo_font = pygame.font.Font("assets/font/font_item.ttf", 24)
-    small_item_font_info = pygame.font.Font("assets/font/font_item.ttf", 18)
+    small_item_font = pygame.font.Font(os.path.join("assets", "font", "font_item.ttf"), 10)
+    big_item_font = pygame.font.Font(os.path.join("assets", "font", "font_item.ttf"), 12)
+    resources_font = pygame.font.Font(os.path.join("assets", "font", "font_item.ttf"), 12)
+    receive_resources_font = pygame.font.Font(os.path.join("assets", "font", "font_item.ttf"), 18)
+    big_ammo_font = pygame.font.Font(os.path.join("assets", "font", "font_item.ttf"), 24)
+    small_item_font_info = pygame.font.Font(os.path.join("assets", "font", "font_item.ttf"), 18)
 
-    objective_type_font = pygame.font.Font("assets/font/text.ttf", 10)
-    main_objective_description_font = pygame.font.Font("assets/font/text.ttf", 14)
-    objective_description_font = pygame.font.Font("assets/font/text.ttf", 12)
+    objective_type_font = pygame.font.Font(os.path.join("assets", "font", "text.ttf"), 10)
+    main_objective_description_font = pygame.font.Font(os.path.join("assets", "font", "text.ttf"), 14)
+    objective_description_font = pygame.font.Font(os.path.join("assets", "font", "text.ttf"), 12)
 
-    lvl_font = pygame.font.Font("assets/font/text.ttf", 18)
-    timer_font = pygame.font.Font("assets/font/text.ttf", 35)
+    lvl_font = pygame.font.Font(os.path.join("assets", "font", "text.ttf"), 18)
+    timer_font = pygame.font.Font(os.path.join("assets", "font", "text.ttf"), 35)
 
     # CONSTANT
     SMALL_CASE_SIZE = 64
@@ -149,9 +150,9 @@ class HUD:
                 pygame.draw.rect(e.screen, Engine.LIGHT_RED, (559, 617, 309 * (entity.health / entity.max_health), 25))
                 e.screen.blit(HUD.boss_head_logo, (566, 612))
 
-                offset = HUD.give_text_offset_w(entity.name, 24, "assets/font/text.ttf")
+                offset = HUD.give_text_offset_w(entity.name, 24, os.path.join("assets", "font", "text.ttf"))
                 HUD.dropShadowText(entity.name, 24, 539 + (120 - offset) // 2, 570, Engine.LIGHT_YELLOW,
-                                   Engine.DARK_GREY, "assets/font/text.ttf", 2)
+                                   Engine.DARK_GREY, os.path.join("assets", "font", "text.ttf"), 2)
 
         # PRINT ALL BUILDS LIFE BAR
         for build in e.builds:
@@ -447,16 +448,16 @@ class HUD:
 
         e.screen.blit(HUD.build_info_hud, pos)
 
-        HUD.dropShadowText(info_name, 16, pos[0] + HUD.build_info_hud.get_width() -
-                           HUD.give_text_offset_w(info_name, 16, "assets/font/text.ttf") - 2, pos[1] - 20,
-                           Engine.LIGHT_YELLOW, Engine.DARK_GREY, "assets/font/text.ttf")
+        HUD.dropShadowText(info_name, 16, pos[0] + HUD.build_info_hud.get_width() - 
+                           HUD.give_text_offset_w(info_name, 16, os.path.join("assets", "font", "text.ttf")) - 2, pos[1] - 20,
+                           Engine.LIGHT_YELLOW, Engine.DARK_GREY, os.path.join("assets", "font", "text.ttf"))
 
         for line, text_line in enumerate(info_content):
             text_line, command = HUD.test_command_into_text(text_line)
             final_text = "> " + text_line
 
             final_render = HUD.dropShadowText(final_text, 10, pos[0] + 34, pos[1] + 8 + 12 * line,
-                                              Engine.LIGHT_YELLOW, Engine.DARK_GREY, "assets/font/text.ttf")
+                                              Engine.LIGHT_YELLOW, Engine.DARK_GREY, os.path.join("assets", "font", "text.ttf"))
 
             if command is not None:
                 if command == "c":
@@ -472,7 +473,7 @@ class HUD:
                                                                pos[1] + 8 + 12 * line, 12, 12)))
                     pygame.draw.rect(e.screen, Engine.LIGHT_YELLOW, ((pos[0] + 37 + final_render.get_width(),
                                                                pos[1] + 8 + 12 * line, 12, 12)), 1)
-                    input_render = pygame.font.Font("assets/font/text.ttf", 8).render("E", True, Engine.LIGHT_YELLOW)
+                    input_render = pygame.font.Font(os.path.join("assets", "font", "text.ttf"), 8).render("E", True, Engine.LIGHT_YELLOW)
                     e.screen.blit(input_render, (pos[0] + 40 + final_render.get_width(),
                                                                pos[1] + 9 + 12 * line))
 
@@ -487,7 +488,7 @@ class HUD:
     def display_custom_timer(remaining_time, text_height: int, rect_pos: tuple, color=Engine.WHITE):
         e = Engine.instance
 
-        font = pygame.font.Font("assets/font/text.ttf", text_height)
+        font = pygame.font.Font(os.path.join("assets", "font", "text.ttf"), text_height)
 
         amount_of_min = remaining_time // 60
         amount_of_sec = remaining_time - (amount_of_min * 60)

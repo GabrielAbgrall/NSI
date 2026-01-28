@@ -1,5 +1,6 @@
 import pygame
 import math
+import os
 
 from engine.BasicFunction import *
 
@@ -53,7 +54,7 @@ class Engine:
         # SCREEN DATA
         self.screen = pygame.display.set_mode(Engine.SCREEN_SIZE)   # PYGAME SCREEN OBJECT
         pygame.display.set_caption(Engine.GAME_NAME)    # PYGAME SCREEN NAME
-        game_icon = pygame.image.load("assets/GAME/game_icon_ingame.png")
+        game_icon = pygame.image.load(os.path.join("assets", "GAME", "game_icon_ingame.png"))
         pygame.display.set_icon(game_icon)              # GAME ICON IMPORT
 
         # DATA
@@ -175,16 +176,16 @@ class Engine:
         mouse_coordinates = pygame.mouse.get_pos()
         all_loots = player.loot_content
 
-        main = pygame.image.load("assets/HUD/LootInterface.png").convert_alpha()
-        cadre = pygame.image.load("assets/HUD/LootInterface_cadre.png").convert_alpha()
-        cadre2 = pygame.image.load("assets/HUD/LootInterface_cadre2.png").convert_alpha()
+        main = pygame.image.load(os.path.join("assets", "HUD", "LootInterface.png")).convert_alpha()
+        cadre = pygame.image.load(os.path.join("assets", "HUD", "LootInterface_cadre.png")).convert_alpha()
+        cadre2 = pygame.image.load(os.path.join("assets", "HUD", "LootInterface_cadre2.png")).convert_alpha()
 
         pos = player.loot_position
 
         self.screen.blit(main, pos)
 
-        font1 = pygame.font.Font("assets/font/text.ttf", 14)
-        font2 = pygame.font.Font("assets/font/text.ttf", 10)
+        font1 = pygame.font.Font(os.path.join("assets", "font", "text.ttf"), 14)
+        font2 = pygame.font.Font(os.path.join("assets", "font", "text.ttf"), 10)
 
         to_delete = []
         for amount, loot in enumerate(all_loots[0]):
@@ -225,11 +226,11 @@ class Engine:
         for amount, loot in enumerate(all_loots[1]):
 
             if amount == 0:
-                loot_img = pygame.image.load("assets/HUD/lumus_logo.png")
+                loot_img = pygame.image.load(os.path.join("assets", "HUD", "lumus_logo.png"))
             elif amount == 1:
-                loot_img = pygame.image.load("assets/HUD/crystal_logo.png")
+                loot_img = pygame.image.load(os.path.join("assets", "HUD", "crystal_logo.png"))
             elif amount == 2:
-                loot_img = pygame.image.load("assets/HUD/ammo_box_logo.png")
+                loot_img = pygame.image.load(os.path.join("assets", "HUD", "ammo_box_logo.png"))
 
             self.screen.blit(cadre2, (pos[0] + 12 + 70*amount, pos[1] + 195))
             self.screen.blit(loot_img, (pos[0] + 22 + 70*amount, pos[1] + 199))

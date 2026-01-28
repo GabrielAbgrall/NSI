@@ -1,5 +1,6 @@
 import pygame
 import sys
+import os
 
 from engine.HUD import *
 from engine.Button import *
@@ -7,9 +8,9 @@ from entity.player.Item import *
 
 
 class Shop_Button(Button):
-    FONT = pygame.font.Font("assets/font/text.ttf", 18)
-    TYPE_FONT = pygame.font.Font("assets/font/text.ttf", 8)
-    PRICE_FONT = pygame.font.Font("assets/font/text.ttf", 20)
+    FONT = pygame.font.Font(os.path.join("assets", "font", "text.ttf"), 18)
+    TYPE_FONT = pygame.font.Font(os.path.join("assets", "font", "text.ttf"), 8)
+    PRICE_FONT = pygame.font.Font(os.path.join("assets", "font", "text.ttf"), 20)
 
     RECT_SIZE = (120, 140)
 
@@ -61,7 +62,7 @@ class Shop_Button(Button):
 
             j = 0
             while True:
-                FONT = pygame.font.Font("assets/font/text.ttf", 18 - j)
+                FONT = pygame.font.Font(os.path.join("assets", "font", "text.ttf"), 18 - j)
                 item_text = FONT.render(self.item.name, True, color)
                 if item_text.get_width() < 110:
                     break
@@ -179,8 +180,8 @@ def shop(selected_shop=None):
     e.display(p, False, False)
 
     gameplay_image = pygame.display.get_surface().copy()
-    black_screen_lo = pygame.image.load("assets/HUD/black_screen_low_opacity.png").convert_alpha()
-    shop_logo = pygame.image.load("assets/HUD/shop_logo.png").convert_alpha()
+    black_screen_lo = pygame.image.load(os.path.join("assets", "HUD", "black_screen_low_opacity.png")).convert_alpha()
+    shop_logo = pygame.image.load(os.path.join("assets", "HUD", "shop_logo.png")).convert_alpha()
 
     actual_stage = 0
 
@@ -196,10 +197,10 @@ def shop(selected_shop=None):
     triggered_mouse = False
     bar_move = False
 
-    NAME_FONT = pygame.font.Font("assets/font/text.ttf", 22)
-    ITEM_TYPE_FONT = pygame.font.Font("assets/font/text.ttf", 14)
-    MONEY_FONT = pygame.font.Font("assets/font/text.ttf", 14)
-    TEXT_FONT = pygame.font.Font("assets/font/text.ttf", 12)
+    NAME_FONT = pygame.font.Font(os.path.join("assets", "font", "text.ttf"), 22)
+    ITEM_TYPE_FONT = pygame.font.Font(os.path.join("assets", "font", "text.ttf"), 14)
+    MONEY_FONT = pygame.font.Font(os.path.join("assets", "font", "text.ttf"), 14)
+    TEXT_FONT = pygame.font.Font(os.path.join("assets", "font", "text.ttf"), 12)
 
     while True:
         mouse_coordinates = pygame.mouse.get_pos()

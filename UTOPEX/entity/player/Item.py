@@ -140,7 +140,7 @@ class Spell(Item_with_CD):  # Cette classe correspond au grenade
 
 # ------------------------- #
 class Gun(Firearm):
-    SHOT_SOUND = pygame.mixer.Sound("assets\SOUND\Gun.wav")
+    SHOT_SOUND = pygame.mixer.Sound(os.path.join("assets", "SOUND", "Gun.wav"))
     SHOT_SOUND.set_volume(0.10)
 
     def __init__(self, name, image, weapon_type, ammo, time_between_ball, projectile_range,
@@ -295,7 +295,7 @@ class Rocket_Launcher(Firearm):
 class AkimboM(DoubleW_Riffle):
     def __init__(self):
         name = "Mazeta"
-        image = pygame.image.load("assets/ITEMS/Mazeta.png")
+        image = pygame.image.load(os.path.join("assets", "ITEMS", "Mazeta.png"))
         ammo = 80
         time_between_ball = 0.05
         projectile_range = 10
@@ -315,7 +315,7 @@ class AkimboM(DoubleW_Riffle):
 class PRL7(Rocket_Launcher):
     def __init__(self):
         name = "PRL-7"
-        image = pygame.image.load("assets/ITEMS/PRL-7.png")
+        image = pygame.image.load(os.path.join("assets", "ITEMS", "PRL-7.png"))
         ammo = 8
         time_between_ball = 1
         projectile_range = Bomb_Projectile.TRAVEL_DISTANCE
@@ -328,7 +328,7 @@ class PRL7(Rocket_Launcher):
 class GMV200(Imprecise_Riffle):
     def __init__(self):
         name = "GMV-200"
-        image = pygame.image.load("assets/ITEMS/GMV-200.png")
+        image = pygame.image.load(os.path.join("assets", "ITEMS", "GMV-200.png"))
         ammo = 150
         time_between_ball = 0.025
         projectile_range = 40
@@ -341,7 +341,7 @@ class GMV200(Imprecise_Riffle):
 class Sniper(Precision_Riffle):
     def __init__(self):
         name = "MB4412C"
-        image = pygame.image.load("assets/ITEMS/MB4412C.png")
+        image = pygame.image.load(os.path.join("assets", "ITEMS", "MB4412C.png"))
         ammo = 8
         time_between_ball = 1
         projectile_range = 40
@@ -354,7 +354,7 @@ class Sniper(Precision_Riffle):
 class Colt(Gun):
     def __init__(self):
         name = "Colt 9mm"
-        image = pygame.image.load("assets/ITEMS/Gun.png")
+        image = pygame.image.load(os.path.join("assets", "ITEMS", "Gun.png"))
         ammo = 30
         time_between_ball = 0.5
         projectile_range = 40
@@ -369,7 +369,7 @@ class Colt(Gun):
 class Fl49(Gun):
     def __init__(self):
         name = "FL-49"
-        image = pygame.image.load("assets/ITEMS/FL-49.png")
+        image = pygame.image.load(os.path.join("assets", "ITEMS", "FL-49.png"))
         ammo = 15
         time_between_ball = 1
         projectile_range = 40
@@ -382,7 +382,7 @@ class Fl49(Gun):
 class Thompson(Gun):
     def __init__(self):
         name = "Thompson"
-        image = pygame.image.load("assets/ITEMS/Thompson.png")
+        image = pygame.image.load(os.path.join("assets", "ITEMS", "Thompson.png"))
         ammo = 110
         time_between_ball = 0.1
         projectile_range = 9
@@ -395,7 +395,7 @@ class Thompson(Gun):
 class AssaultRifle(Gun):
     def __init__(self):
         name = "M16 A4"
-        image = pygame.image.load("assets/ITEMS/M16A4.png")
+        image = pygame.image.load(os.path.join("assets", "ITEMS", "M16A4.png"))
         ammo = 50
         time_between_ball = 0.3
         projectile_range = 40
@@ -408,7 +408,7 @@ class AssaultRifle(Gun):
 class ShotGun(Close_Gun):
     def __init__(self):
         name = "RS-X3"
-        image = pygame.image.load("assets/ITEMS/RS-X2.png")
+        image = pygame.image.load(os.path.join("assets", "ITEMS", "RS-X2.png"))
         ammo = 15
         time_between_ball = 0.75
         projectile_range = 7
@@ -426,7 +426,7 @@ class ShotGun(Close_Gun):
 class Cola(Utility_Item):
     def __init__(self):
         name = "DogaCola"
-        image = pygame.image.load("assets/ITEMS/Dogacola.png")
+        image = pygame.image.load(os.path.join("assets", "ITEMS", "Dogacola.png"))
         usage = 3
         cd = 20
         effect = [Damage_Boost(8, 0.5)]
@@ -436,7 +436,7 @@ class Cola(Utility_Item):
 class ChocolateBar(Utility_Item):
     def __init__(self):
         name = "Scarlate"
-        image = pygame.image.load("assets/ITEMS/Scarlate.png")
+        image = pygame.image.load(os.path.join("assets", "ITEMS", "Scarlate.png"))
         usage = 3
         cd = 4
         effect = [Give_Health(0, 8)]
@@ -446,7 +446,7 @@ class ChocolateBar(Utility_Item):
 class SpicyJuice(Utility_Item):
     def __init__(self):
         name = "SpicyJuice"
-        image = pygame.image.load("assets/ITEMS/SpicyJuice.png")
+        image = pygame.image.load(os.path.join("assets", "ITEMS", "SpicyJuice.png"))
         usage = 3
         cd = 30
         effect = [Give_Speed(8, 0.25)]
@@ -458,7 +458,7 @@ class SpicyJuice(Utility_Item):
 class Burger(Utility_Item):
     def __init__(self):
         name = "McDogald"
-        image = pygame.image.load("assets/ITEMS/McDogald.png")
+        image = pygame.image.load(os.path.join("assets", "ITEMS", "McDogald.png"))
         usage = 1
         cd = 30
         effect = [Give_Speed(3, -0.05), Give_Health(0, 15)]
@@ -470,7 +470,7 @@ class Burger(Utility_Item):
 class Candy(Utility_Item):
     def __init__(self):
         name = "Berty Candy"
-        image = pygame.image.load("assets/ITEMS/Berty_Candy.png")
+        image = pygame.image.load(os.path.join("assets", "ITEMS", "Berty_Candy.png"))
         usage = 5
         cd = 12
         effect = [Give_Speed(5, 0.1), Give_Attack_Speed(5, -0.5)]
@@ -482,7 +482,7 @@ class Candy(Utility_Item):
 class Engine_Oil(Utility_Item):
     def __init__(self):
         name = "Carburant"
-        image = pygame.image.load("assets/ITEMS/Engine_Oil.png")
+        image = pygame.image.load(os.path.join("assets", "ITEMS", "Engine_Oil.png"))
         usage = 2
         cd = 20
         effect = [Damage_Boost(10, 0.5), Give_Attack_Speed(10, -0.5)]
@@ -492,7 +492,7 @@ class Engine_Oil(Utility_Item):
 class Ammo_Box(Item):
     def __init__(self):
         name = "Boîte de Munitions"
-        image = pygame.image.load("assets/ITEMS/Ammo_box.png")
+        image = pygame.image.load(os.path.join("assets", "ITEMS", "Ammo_box.png"))
         super().__init__(name, "UTILITY", image)
 
         self.shop_image = pygame.transform.scale(image, (90, 90))
@@ -504,7 +504,7 @@ class Ammo_Box(Item):
 class Necklace(Unique_Item):  # Collier qui permet de se Téléporter au coeur
     def __init__(self):
         name = "Collier"
-        image = pygame.image.load("assets/ITEMS/Necklace.png")
+        image = pygame.image.load(os.path.join("assets", "ITEMS", "Necklace.png"))
         cd = 60
         super().__init__(name, image, cd)
 
@@ -520,7 +520,7 @@ class Necklace(Unique_Item):  # Collier qui permet de se Téléporter au coeur
 class Transmute(Unique_Item):  # Permet d'échanger sa position avec l'ennemi ciblé
     def __init__(self):
         name = "Transmuteur"
-        image = pygame.image.load("assets/ITEMS/Transmuter.png")
+        image = pygame.image.load(os.path.join("assets", "ITEMS", "Transmuter.png"))
         cd = 25
         super().__init__(name, image, cd)
 
@@ -538,7 +538,7 @@ class Transmute(Unique_Item):  # Permet d'échanger sa position avec l'ennemi ci
 class RailGun(Unique_Item):  # Gun who can stunt enemies
     def __init__(self):
         name = "RailGun"
-        image = pygame.image.load("assets/ITEMS/RailGun.png")
+        image = pygame.image.load(os.path.join("assets", "ITEMS", "RailGun.png"))
         cd = 12
         super().__init__(name, image, cd)
 
@@ -560,7 +560,7 @@ class RailGun(Unique_Item):  # Gun who can stunt enemies
 class Pickaxe(Unique_Item):  # Mining speed is increased
     def __init__(self):
         name = "Pioche"
-        image = pygame.image.load("assets/ITEMS/Pickaxe.png")
+        image = pygame.image.load(os.path.join("assets", "ITEMS", "Pickaxe.png"))
         cd = 90
         super().__init__(name, image, cd)
 
@@ -576,7 +576,7 @@ class Pickaxe(Unique_Item):  # Mining speed is increased
 class MachCrystal(Unique_Item):  # Mining speed is increased
     def __init__(self):
         name = "Musgravite"
-        image = pygame.image.load("assets/ITEMS/MachCrystal.png")
+        image = pygame.image.load(os.path.join("assets", "ITEMS", "MachCrystal.png"))
         cd = 4
         super().__init__(name, image, cd)
 
@@ -650,7 +650,7 @@ class Bomb(Spell):
 
     def __init__(self):
         name = "Bombe Cristal"
-        image = pygame.image.load("assets/ITEMS/crystal_bomb.png")
+        image = pygame.image.load(os.path.join("assets", "ITEMS", "crystal_bomb.png"))
 
         super().__init__(name, image, Bomb.CD, Bomb.STACK)
         self.damage = Bomb.BASE_DAMAGE

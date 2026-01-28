@@ -6,6 +6,7 @@ import random
 from engine.Engine import Engine
 from build.Core import *
 from entity.Effect import *
+import os
 
 
 class Enemy(Smart_Entity):  # La classe enemy est la clase mère de tout les types d'ennemis si dessous,
@@ -13,9 +14,9 @@ class Enemy(Smart_Entity):  # La classe enemy est la clase mère de tout les typ
     # leurs affichage
     HEALTH_BAR_LEN = 30  # C'est la longueur de la barre de vie au dessus de leur têtes
     HEALTH_BAR_HEIGHT = 8  # C'est la hauteur de cette même barre de vie
-    PLAYER_HIT_SOUND = pygame.mixer.Sound("assets\SOUND\hit.wav")
+    PLAYER_HIT_SOUND = pygame.mixer.Sound(os.path.join("assets", "SOUND", "hit.wav"))
     PLAYER_HIT_SOUND.set_volume(0.025)
-    CORE_HIT_SOUND = pygame.mixer.Sound("assets\SOUND\core_hit.mp3")
+    CORE_HIT_SOUND = pygame.mixer.Sound(os.path.join("assets", "SOUND", "core_hit.mp3"))
     CORE_HIT_SOUND.set_volume(0.025)
     PATH_FINDING_CD = 1  # C'est le cooldown(donc CD ou delais)entre les actualisation du chemin que prend l'ennemi
     # vers sa cible qui peut être un joueur ou le coeur .
@@ -163,11 +164,11 @@ class MainBot(Enemy):  # C'est un ennemi humanoïde qui va se diriger lentement 
     OCCURRENCE_FREQUENCY = 2
 
     def __init__(self):
-        image = pygame.image.load("assets/ENEMIES/MainBot/RIGHT.png")
-        textures = [pygame.image.load("assets/ENEMIES/MainBot/LEFT.png"),  # C'est les différentes textures de l'ennemi
-                    pygame.image.load("assets/ENEMIES/MainBot/RIGHT.png"),
-                    pygame.image.load("assets/ENEMIES/MainBot/UP.png"),
-                    pygame.image.load("assets/ENEMIES/MainBot/DOWN.png")]
+        image = pygame.image.load(os.path.join("assets", "ENEMIES", "MainBot", "RIGHT.png"))
+        textures = [pygame.image.load(os.path.join("assets", "ENEMIES", "MainBot", "LEFT.png")),  # C'est les différentes textures de l'ennemi
+                    pygame.image.load(os.path.join("assets", "ENEMIES", "MainBot", "RIGHT.png")),
+                    pygame.image.load(os.path.join("assets", "ENEMIES", "MainBot", "UP.png")),
+                    pygame.image.load(os.path.join("assets", "ENEMIES", "MainBot", "DOWN.png"))]
         # Ce sont les paramètres de cet ennemi
         START_HP = 10
         START_SPEED = 0.01
@@ -194,11 +195,11 @@ class SpiderBot(Enemy):  # C'est un ennemi sous la forme d'une araignée mécani
     OCCURRENCE_FREQUENCY = 1
 
     def __init__(self):
-        image = pygame.image.load("assets/ENEMIES/SpiderBot/RIGHT.png")
-        textures = [pygame.image.load("assets/ENEMIES/SpiderBot/LEFT.png"),
-                    pygame.image.load("assets/ENEMIES/SpiderBot/RIGHT.png"),
-                    pygame.image.load("assets/ENEMIES/SpiderBot/UP.png"),
-                    pygame.image.load("assets/ENEMIES/SpiderBot/DOWN.png")]
+        image = pygame.image.load(os.path.join("assets", "ENEMIES", "SpiderBot", "RIGHT.png"))
+        textures = [pygame.image.load(os.path.join("assets", "ENEMIES", "SpiderBot", "LEFT.png")),
+                    pygame.image.load(os.path.join("assets", "ENEMIES", "SpiderBot", "RIGHT.png")),
+                    pygame.image.load(os.path.join("assets", "ENEMIES", "SpiderBot", "UP.png")),
+                    pygame.image.load(os.path.join("assets", "ENEMIES", "SpiderBot", "DOWN.png"))]
         # Ce sont les paramètres de cet ennemi
 
         MONEY_DROP_RANGE = [1, 3]
@@ -228,11 +229,11 @@ class GoldBot(Enemy):  # C'est un ennemi sous la forme d'une humanoïde paré d'
     OCCURRENCE_FREQUENCY = 3
 
     def __init__(self):
-        image = pygame.image.load("assets/ENEMIES/GoldBot/RIGHT.png")
-        textures = [pygame.image.load("assets/ENEMIES/GoldBot/LEFT.png"),
-                    pygame.image.load("assets/ENEMIES/GoldBot/RIGHT.png"),
-                    pygame.image.load("assets/ENEMIES/GoldBot/UP.png"),
-                    pygame.image.load("assets/ENEMIES/GoldBot/DOWN.png")]
+        image = pygame.image.load(os.path.join("assets", "ENEMIES", "GoldBot", "RIGHT.png"))
+        textures = [pygame.image.load(os.path.join("assets", "ENEMIES", "GoldBot", "LEFT.png")),
+                    pygame.image.load(os.path.join("assets", "ENEMIES", "GoldBot", "RIGHT.png")),
+                    pygame.image.load(os.path.join("assets", "ENEMIES", "GoldBot", "UP.png")),
+                    pygame.image.load(os.path.join("assets", "ENEMIES", "GoldBot", "DOWN.png"))]
         # Ce sont les paramètres de cet ennemi
 
         MONEY_DROP_RANGE = [3, 5]
@@ -261,12 +262,12 @@ class ScarletSpider(Enemy):  # C'est un ennemi sous la forme d'une araignée mé
     NAME = "ScarletSpider"
 
     def __init__(self):
-        image = pygame.image.load("assets/ENEMIES/ScarletSpider/RIGHT.png")
-        textures = [pygame.image.load("assets/ENEMIES/ScarletSpider/LEFT.png"),
+        image = pygame.image.load(os.path.join("assets", "ENEMIES", "ScarletSpider", "RIGHT.png"))
+        textures = [pygame.image.load(os.path.join("assets", "ENEMIES", "ScarletSpider", "LEFT.png")),
                     # C'est les différentes textures de l'ennemi
-                    pygame.image.load("assets/ENEMIES/ScarletSpider/RIGHT.png"),
-                    pygame.image.load("assets/ENEMIES/ScarletSpider/UP.png"),
-                    pygame.image.load("assets/ENEMIES/ScarletSpider/DOWN.png")]
+                    pygame.image.load(os.path.join("assets", "ENEMIES", "ScarletSpider", "RIGHT.png")),
+                    pygame.image.load(os.path.join("assets", "ENEMIES", "ScarletSpider", "UP.png")),
+                    pygame.image.load(os.path.join("assets", "ENEMIES", "ScarletSpider", "DOWN.png"))]
         # Ce sont les paramètres de cet ennemi
         START_HP = 15
         START_SPEED = 0.055
@@ -439,17 +440,17 @@ class UIF45(Boss):
     START_SPEED = 0.01
     BASE_DAMAGE = 1
 
-    MAIN_IMAGE = pygame.image.load("assets/ENEMIES/UI-F45/0_RIGHT.png")
+    MAIN_IMAGE = pygame.image.load(os.path.join("assets", "ENEMIES", "UI-F45", "0_RIGHT.png"))
 
-    TEXTURES = [[pygame.image.load("assets/ENEMIES/UI-F45/0_LEFT.png"),
-                 pygame.image.load("assets/ENEMIES/UI-F45/0_RIGHT.png"),
-                 pygame.image.load("assets/ENEMIES/UI-F45/0_UP.png"),
-                 pygame.image.load("assets/ENEMIES/UI-F45/0_DOWN.png")],
+    TEXTURES = [[pygame.image.load(os.path.join("assets", "ENEMIES", "UI-F45", "0_LEFT.png")),
+                 pygame.image.load(os.path.join("assets", "ENEMIES", "UI-F45", "0_RIGHT.png")),
+                 pygame.image.load(os.path.join("assets", "ENEMIES", "UI-F45", "0_UP.png")),
+                 pygame.image.load(os.path.join("assets", "ENEMIES", "UI-F45", "0_DOWN.png"))],
 
-                [pygame.image.load("assets/ENEMIES/UI-F45/1_LEFT.png"),
-                 pygame.image.load("assets/ENEMIES/UI-F45/1_RIGHT.png"),
-                 pygame.image.load("assets/ENEMIES/UI-F45/1_UP.png"),
-                 pygame.image.load("assets/ENEMIES/UI-F45/1_DOWN.png")]]
+                [pygame.image.load(os.path.join("assets", "ENEMIES", "UI-F45", "1_LEFT.png")),
+                 pygame.image.load(os.path.join("assets", "ENEMIES", "UI-F45", "1_RIGHT.png")),
+                 pygame.image.load(os.path.join("assets", "ENEMIES", "UI-F45", "1_UP.png")),
+                 pygame.image.load(os.path.join("assets", "ENEMIES", "UI-F45", "1_DOWN.png"))]]
 
     MONEY_DROP_RANGE = [130, 200]
     CRYSTAL_DROP_RANGE = [80, 150]

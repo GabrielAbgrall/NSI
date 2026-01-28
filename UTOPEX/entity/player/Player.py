@@ -1,4 +1,5 @@
 import math
+import os
 
 import pygame
 from shapely.geometry import Polygon
@@ -11,9 +12,9 @@ class Player(Smart_Entity):  # Voici le player, il correspond à qui le joueur v
     START_HP = 20
     START_SPEED = 0.1
 
-    MELEE_ATTACK_TOUCH_SOUND = pygame.mixer.Sound("assets\SOUND\meleetouch.wav")
+    MELEE_ATTACK_TOUCH_SOUND = pygame.mixer.Sound(os.path.join("assets", "SOUND", "meleetouch.wav"))
     MELEE_ATTACK_TOUCH_SOUND.set_volume(0.125)
-    MELEE_ATTACK_SOUND = pygame.mixer.Sound("assets\SOUND\melee.wav")
+    MELEE_ATTACK_SOUND = pygame.mixer.Sound(os.path.join("assets", "SOUND", "melee.wav"))
 
     MELEE_ATTACK_CD = 0.5
     MELEE_ATTACK_BASE_DAMAGE = 1
@@ -25,11 +26,11 @@ class Player(Smart_Entity):  # Voici le player, il correspond à qui le joueur v
 
     def __init__(self, pos, camera, inventory):
         super().__init__(pos, Player.START_SPEED, Player.START_HP)
-        self.image = pygame.image.load("assets/PLAYER/RIGHT.png")
-        self.textures = [pygame.image.load("assets/PLAYER/LEFT.png"),  # C'est les différentes textures du joueur
-                    pygame.image.load("assets/PLAYER/RIGHT.png"),
-                    pygame.image.load("assets/PLAYER/UP.png"),
-                    pygame.image.load("assets/PLAYER/DOWN.png")]
+        self.image = pygame.image.load(os.path.join("assets", "PLAYER", "RIGHT.png"))
+        self.textures = [pygame.image.load(os.path.join("assets", "PLAYER", "LEFT.png")),  # C'est les différentes textures du joueur
+                    pygame.image.load(os.path.join("assets", "PLAYER", "RIGHT.png")),
+                    pygame.image.load(os.path.join("assets", "PLAYER", "UP.png")),
+                    pygame.image.load(os.path.join("assets", "PLAYER", "DOWN.png"))]
         self.last_image = self.image
         self.camera = camera  # La camera est tout le temps cetrée sur le joueur
         if self.camera is not None:
@@ -41,7 +42,7 @@ class Player(Smart_Entity):  # Voici le player, il correspond à qui le joueur v
         self.melee_attack_radius = 10
 
         self.melee_animation = False
-        self.melee_textures = [pygame.image.load(f"assets/PLAYER/Melee_Frame/{img}.png") for img in range(11)]
+        self.melee_textures = [pygame.image.load(os.path.join("assets", "PLAYER", "Melee_Frame", f"{img}.png")) for img in range(11)]
         self.melee_actual_texture = 0
         self.melee_textures_frame_per_img = 4
         self.melee_textures_actual_frame = 0

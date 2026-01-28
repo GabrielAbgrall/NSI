@@ -1,4 +1,5 @@
 import pygame
+import os
 
 from entity.player.Item import *
 from entity.player.TalentContainer import *
@@ -16,7 +17,7 @@ T_Bomb = Talent_Container(
     ["Envoie un projectile qui explose et inflige des dégâts"],
     Assign_BombSpell,
     [50, 100],
-    pygame.image.load("assets/TALENT/BOMB/Bomb.png")
+    pygame.image.load(os.path.join("assets", "TALENT", "BOMB", "Bomb.png"))
 )
 
 T_Tact = Talent_Container(
@@ -24,7 +25,7 @@ T_Tact = Talent_Container(
     ["Vous pouvez désormais sélectionner une zone d'atterissage"," pour votre bombe"],
     BOMB_SPELL.T_tact,
     [50, 150],
-    pygame.image.load("assets/TALENT/BOMB/Tact.png")
+    pygame.image.load(os.path.join("assets", "TALENT", "BOMB", "Tact.png"))
 )
 
 T_Fireworks = Talent_Container(
@@ -32,7 +33,7 @@ T_Fireworks = Talent_Container(
     ["Augmente les dégâts et et réduit le temps de rechargement", " de 10 sec"],
     BOMB_SPELL.T_fireworks,
     [50, 150],
-    pygame.image.load("assets/TALENT/BOMB/Fireworks.png")
+    pygame.image.load(os.path.join("assets", "TALENT", "BOMB", "Fireworks.png"))
 )
 
 T_ProtectBomb = Talent_Container(
@@ -40,7 +41,7 @@ T_ProtectBomb = Talent_Container(
     ["Une partie des dégâts infligées par la bombe vous sont remis", "sous forme de PV"],
     BOMB_SPELL.T_protection_bomb,
     [50, 250],
-    pygame.image.load("assets/TALENT/BOMB/Protection_Bomb.png")
+    pygame.image.load(os.path.join("assets", "TALENT", "BOMB", "Protection_Bomb.png"))
 )
 
 T_ChainDeath = Talent_Container(
@@ -48,7 +49,7 @@ T_ChainDeath = Talent_Container(
     ["Si un ennemi meurt d'une explosion alors une nouvelle", "explosion est déclenchée"],
     BOMB_SPELL.T_chain_death,
     [50, 250],
-    pygame.image.load("assets/TALENT/BOMB/Chain_Death.png")
+    pygame.image.load(os.path.join("assets", "TALENT", "BOMB", "Chain_Death.png"))
 )
 
 T_master_fireworks = Talent_Container(
@@ -56,7 +57,7 @@ T_master_fireworks = Talent_Container(
     ["Vous possédez désormais 2 charges"],
     BOMB_SPELL.T_master_fireworks,
     [50, 250],
-    pygame.image.load("assets/TALENT/BOMB/Master_Fireworks.png")
+    pygame.image.load(os.path.join("assets", "TALENT", "BOMB", "Master_Fireworks.png"))
 )
 
 T_Fragmentation = Talent_Container(
@@ -64,5 +65,5 @@ T_Fragmentation = Talent_Container(
     ["La bombe déclenche plusieurs petite explosion autour", "du point d'impact"],
     BOMB_SPELL.T_fragmentation,
     [50, 250],
-    pygame.image.load("assets/TALENT/BOMB/Fragmentation.png")
+    pygame.image.load(os.path.join("assets", "TALENT", "BOMB", "Fragmentation.png"))
 )

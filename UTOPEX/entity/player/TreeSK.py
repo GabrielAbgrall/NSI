@@ -1,4 +1,5 @@
 import sys, pygame
+import os
 
 from entity.player.Bomb_Spell import *
 from engine.Button import *
@@ -178,18 +179,18 @@ def change_talent():
     triggered = False
 
     talent_in_load = None
-    talent_info_font = pygame.font.Font("assets/font/text.ttf", 25)
-    talent_info_small_font = pygame.font.Font("assets/font/text.ttf", 14)
+    talent_info_font = pygame.font.Font(os.path.join("assets", "font", "text.ttf"), 25)
+    talent_info_small_font = pygame.font.Font(os.path.join("assets", "font", "text.ttf"), 14)
 
-    crystal_logo = pygame.image.load("assets/HUD/crystal_logo.png")
-    money_logo = pygame.image.load("assets/HUD/lumus_logo.png")
+    crystal_logo = pygame.image.load(os.path.join("assets", "HUD", "crystal_logo.png"))
+    money_logo = pygame.image.load(os.path.join("assets", "HUD", "lumus_logo.png"))
 
     Engine.instance.display(Player.instance, False, False)
 
     gameplay_image = pygame.display.get_surface().copy()
-    black_screen_lo = pygame.image.load("assets/HUD/black_screen_low_opacity.png").convert_alpha()
+    black_screen_lo = pygame.image.load(os.path.join("assets", "HUD", "black_screen_low_opacity.png")).convert_alpha()
 
-    talent = pygame.image.load("assets/HUD/talent.png").convert_alpha()
+    talent = pygame.image.load(os.path.join("assets", "HUD", "talent.png")).convert_alpha()
 
     open_time = time.perf_counter()
 

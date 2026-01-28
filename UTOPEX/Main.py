@@ -45,8 +45,8 @@ def load_game(GAME_MAP: str):  # This function turn all parameters to 0
 
     world_map = Map()
     world_map.load_save(GAME_MAP)  # We load a map_save
-    if os.path.exists(f"{GAME_MAP}/background.png"):
-        world_map.set_background(pygame.image.load(f"{GAME_MAP}/background.png").convert_alpha())
+    if os.path.exists(os.path.join(GAME_MAP, "background.png")):
+        world_map.set_background(pygame.image.load(os.path.join(GAME_MAP, "background.png")).convert_alpha())
 
     pygame.mouse.set_visible(False)  # Disable the basic mouse cursor (to display a custom cursor)
 
@@ -103,17 +103,17 @@ def main_menu():  # Main Menu is the first screen when the game is launch
 
     trigger_button = False
 
-    GAME_LOGO = pygame.image.load("assets/GAME/game_logo.png").convert_alpha()
+    GAME_LOGO = pygame.image.load(os.path.join("assets", "GAME", "game_logo.png")).convert_alpha()
 
-    with open("engine/data/game_state.txt", 'r') as f:
+    with open(os.path.join("engine", "data", "game_state.txt"), 'r') as f:
         GAME_DATA = ast.literal_eval(f.read())
 
     mission_select_interface = False
-    mission_select_interface_buttons = [MissionButton((50, 300), "FACILE", "engine/saves/DefendCore_Map0", "M1", GAME_DATA["M1"], None,
+    mission_select_interface_buttons = [MissionButton((50, 300), "FACILE", os.path.join("engine", "saves", "DefendCore_Map0"), "M1", GAME_DATA["M1"], None,
                                                       "MISSION : Entraînement", Engine.LIGHT_YELLOW),
-                                        MissionButton((465, 300), "NORMALE", "engine/saves/DefendCore_Map1",  "M2", GAME_DATA["M2"], None,
+                                        MissionButton((465, 300), "NORMALE", os.path.join("engine", "saves", "DefendCore_Map1"),  "M2", GAME_DATA["M2"], None,
                                                       "MISSION : Attaque du coeur", Engine.LIGHT_YELLOW),
-                                        MissionButton((880, 300), "DIFFICILE", "engine/saves/SaveCore_Map1", "M3", GAME_DATA["M3"], None,
+                                        MissionButton((880, 300), "DIFFICILE", os.path.join("engine", "saves", "SaveCore_Map1"), "M3", GAME_DATA["M3"], None,
                                                       "MISSION : Sauvetage d'urgence", Engine.LIGHT_YELLOW),
                                         MissionSelection_Button((390, 650, 500, 50), None, "Retour au menu", Engine.LIGHT_RED)]
     total_missions = 0
@@ -125,21 +125,21 @@ def main_menu():  # Main Menu is the first screen when the game is launch
                 mission_completed += 1
 
     text = f"{mission_completed} / {total_missions}   ({int((mission_completed / total_missions)*100)} %)"
-    completion_text = pygame.font.Font("assets/font/text.ttf", 14).render(text, True, Engine.WHITE)
+    completion_text = pygame.font.Font(os.path.join("assets", "font", "text.ttf"), 14).render(text, True, Engine.WHITE)
 
     challenge_select_interface = False
-    challenge_select_interface_buttons = [ChallengeButton((50, 300), "AUCUN COFFRE", "engine/saves/DefendCore_Map1", "D1",
+    challenge_select_interface_buttons = [ChallengeButton((50, 300), "AUCUN COFFRE", os.path.join("engine", "saves", "DefendCore_Map1"), "D1",
                                                         GAME_DATA["D1"], C_NoChest, None, "DÉFI : Récompenses limité",
                                                         Engine.LIGHT_YELLOW),
-                                        ChallengeButton((465, 300), "VIE RÉDUITE", "engine/saves/DefendCore_Map1", "D2",
+                                        ChallengeButton((465, 300), "VIE RÉDUITE", os.path.join("engine", "saves", "DefendCore_Map1"), "D2",
                                                         GAME_DATA["D2"], C_Weakness, None, "DÉFI : Faiblesse",
                                                         Engine.LIGHT_YELLOW),
                                         ChallengeButton((880, 300), "ADVERSAIRES PLUS FORTS",
-                                                        "engine/saves/DefendCore_Map1", "D3",
+                                                        os.path.join("engine", "saves", "DefendCore_Map1"), "D3",
                                                         GAME_DATA["D3"], C_DoublePower, None, "DÉFI : Double Force",
                                                         Engine.LIGHT_YELLOW),
                                         ChallengeButton((465, 430), "ADVERSAIRES PLUS NOMBREUX",
-                                                          "engine/saves/DefendCore_Map1", "D4",
+                                                          os.path.join("engine", "saves", "DefendCore_Map1"), "D4",
                                                           GAME_DATA["D4"], C_Melee, None, "DÉFI : Mélée générale",
                                                           Engine.LIGHT_YELLOW),
                                     ChallengeSelection_Button((390, 650, 500, 50), None, "Retour au menu", Engine.LIGHT_RED)]
@@ -152,7 +152,7 @@ def main_menu():  # Main Menu is the first screen when the game is launch
                 challenges_completed += 1
 
     text = f"{challenges_completed} / {total_challenges}   ({int((challenges_completed / total_challenges)*100)} %)"
-    completion_text_d = pygame.font.Font("assets/font/text.ttf", 14).render(text, True, Engine.WHITE)
+    completion_text_d = pygame.font.Font(os.path.join("assets", "font", "text.ttf"), 14).render(text, True, Engine.WHITE)
 
     while True:
         mouse_coordinate = pygame.mouse.get_pos()
@@ -222,7 +222,7 @@ def main_menu():  # Main Menu is the first screen when the game is launch
 
         # If a button has been pressed, the game have to launch (because only 3 buttons: QUIT or LAUNCH or InfiniteMode)
         if trigger_button:
-            load_game("engine/saves/DefendCore_Map1")
+            load_game(os.path.join("engine", "saves", "DefendCore_Map1"))
             E.game_manager.launch_infinite_mode()
             return
 
@@ -233,17 +233,17 @@ def end_game(reason: str, victory: bool):  # This function is called if we had a
 
     if victory:
         GAME_DATA[GAME_MISSION_NAME] = True
-        with open("engine/data/game_state.txt", 'w') as f:
+        with open(os.path.join("engine", "data", "game_state.txt"), 'w') as f:
             f.writelines(str(GAME_DATA))
 
     E.display(P, False, False)
 
     game_image = pygame.display.get_surface().copy()
-    black_screen_lo = pygame.image.load("assets/HUD/black_screen_low_opacity.png").convert_alpha()
-    game_over_black = pygame.image.load("assets/HUD/game_over_black.png").convert_alpha()
-    victory_logo = pygame.image.load("assets/HUD/victory_logo.png").convert_alpha()
+    black_screen_lo = pygame.image.load(os.path.join("assets", "HUD", "black_screen_low_opacity.png")).convert_alpha()
+    game_over_black = pygame.image.load(os.path.join("assets", "HUD", "game_over_black.png")).convert_alpha()
+    victory_logo = pygame.image.load(os.path.join("assets", "HUD", "victory_logo.png")).convert_alpha()
 
-    reason_of_loose_font = pygame.font.Font("assets/font/text.ttf", 25)
+    reason_of_loose_font = pygame.font.Font(os.path.join("assets", "font", "text.ttf"), 25)
 
     actual_frame = 0    # Frame counter
 
@@ -321,10 +321,10 @@ def end_game(reason: str, victory: bool):  # This function is called if we had a
 
 def display_keyboard_info(key: str, pos):  # Cette fonction crée la représentation d'une touche de clavier ,
     # elle est appelée et afficher lors de l'animation de fin
-    keyboard_key = pygame.image.load("assets/HUD/keyboard_key.png")
+    keyboard_key = pygame.image.load(os.path.join("assets", "HUD", "keyboard_key.png"))
 
-    big_key_font = pygame.font.Font("assets/font/text.ttf", 32)
-    small_key_font = pygame.font.Font("assets/font/text.ttf", 12)
+    big_key_font = pygame.font.Font(os.path.join("assets", "font", "text.ttf"), 32)
+    small_key_font = pygame.font.Font(os.path.join("assets", "font", "text.ttf"), 12)
 
     E.screen.blit(keyboard_key, pos)
 
@@ -476,8 +476,8 @@ def edit_map_mode():
 
     p_img = pygame.transform.scale(P.image, (13, 45))
     c_img = pygame.transform.scale(Core((0, 0, 0)).textures[0], (20, 45))
-    s_img = pygame.transform.scale(pygame.image.load("assets/BUILD/SHOP/2_4.png"), (45, 45))
-    chest_img = pygame.transform.scale(pygame.image.load("assets/BUILD/Chest.png"), (45, 35))
+    s_img = pygame.transform.scale(pygame.image.load(os.path.join("assets", "BUILD", "SHOP", "2_4.png")), (45, 45))
+    chest_img = pygame.transform.scale(pygame.image.load(os.path.join("assets", "BUILD", "Chest.png")), (45, 35))
 
     buttons = [OpenMapMenuButton((80, 480, 200, 50), None, "Open", Engine.LIGHT_BLUE, 24),
                SaveMapButton((80, 550, 200, 50), None, "Save", Engine.GREEN, 24),
@@ -513,7 +513,7 @@ def edit_map_mode():
     build_name = None
     localisation = None
 
-    save_dir = "engine/saves/"
+    save_dir = os.path.join("engine", "saves")
     all_maps_create = [m for m in os.listdir(save_dir)]
     maps_buttons = []
     for i, m in enumerate(all_maps_create):
@@ -643,7 +643,7 @@ def edit_map_mode():
                 elif isinstance(button, SaveMapButton):
                     if localisation is None:
                         date = time.strftime("%Y-%m-%d", time.gmtime())
-                        localisation = f"{save_dir}map_{date}_1"
+                        localisation = os.path.join(save_dir, f"map_{date}_1")
                         i = 1
                         while os.path.exists(localisation):
                             i += 1
@@ -685,7 +685,7 @@ def edit_map_mode():
                 button.display()
                 button.is_on(mouse_coordinates)
                 if button.is_triggered(input_info.get("LEFT_CLICK")):
-                    localisation = f"{save_dir}{button.text}"
+                    localisation = os.path.join(save_dir, button.text)
                     E.map.load_save(localisation)
 
         pygame.display.update()
@@ -731,12 +731,12 @@ def wave_creator_mode():
 
     actual_height = 0
 
-    save_dir = "engine/saves/"
+    save_dir = os.path.join("engine", "saves")
     all_maps_create = [m for m in os.listdir(save_dir)]
     maps_buttons = []
     for i, m in enumerate(all_maps_create):
         M = Map()
-        M.load_save(f"{save_dir}{m}")
+        M.load_save(os.path.join(save_dir, m))
         color = Engine.LIGHT_RED if M.map_info.get("WAVES") is None else Engine.GREEN
         maps_buttons.append(Button((10, 100 + i*40, 250, 30), None, m, color, 20))
     open_map_menu = False
@@ -817,9 +817,9 @@ def wave_creator_mode():
                         FINAL_WAVES_CONVERT.append([])
                         for enemy_tuple in wave:
                             FINAL_WAVES_CONVERT[-1].append((enemy_tuple[0].NAME, enemy_tuple[1]))
-                    M.load_save(f"{save_dir}{button.text}")
+                    M.load_save(os.path.join(save_dir, button.text))
                     M.map_info["WAVES"] = FINAL_WAVES_CONVERT
-                    M.save(f"{save_dir}{button.text}")
+                    M.save(os.path.join(save_dir, button.text))
                     button.color = Engine.GREEN
 
         pygame.display.update()
@@ -843,10 +843,10 @@ if WAVES_CREATOR_MODE:
     wave_creator_mode()
 
 
-load_game("engine/saves/DefendCore_Map0")
+load_game(os.path.join("engine", "saves", "DefendCore_Map0"))
 
 pygame.mixer.init()
-pygame.mixer.music.load("assets/MUSIC/MainTheme.wav")
+pygame.mixer.music.load(os.path.join("assets", "MUSIC", "MainTheme.wav"))
 pygame.mixer.music.play(-1)
 pygame.mixer.music.set_volume(0.1)
 
